@@ -79,12 +79,13 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
         realm: keycloak.realm,
       })
       setIsAuthenticated(isAuthenticatedResponse)
-      localStorage.setItem('ckw-token', JSON.stringify(keycloak.token))
+      localStorage.setItem('your-token', JSON.stringify(keycloak.token))
       setUser(keycloak.idTokenParsed)
     } catch (error) {
       setIsAuthenticated(false)
       setKeycloakError(true)
-      localStorage.removeItem('ckw-token')
+      localStorage.removeItem('your-token')
+      console.log('error', error)
     }
   }, [])
 
@@ -95,7 +96,7 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
   const logout = useCallback(async () => {
     try {
       await keycloak.logout()
-      localStorage.removeItem('ckw-token')
+      localStorage.removeItem('your-token')
     } catch (error) {
       // eslint-disable-next-line no-console
       console.log('keycloak-logout error:', error)
@@ -106,7 +107,7 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
     try {
       const isRefreshed = await keycloak.updateToken(5)
       if (isRefreshed) {
-        localStorage.setItem('ckw-token', JSON.stringify(keycloak.token))
+        localStorage.setItem('your-token', JSON.stringify(keycloak.token))
       }
     } catch (error) {
       keycloak.logout()

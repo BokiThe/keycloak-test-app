@@ -1,50 +1,44 @@
-# React + TypeScript + Vite
+# Keycloak test app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This app is created as a template to test keycloak login and register process using [VITE](https://vite.dev/) , [keycloak-js](https://www.npmjs.com/package/keycloak-js) , and react Context
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+First install dependencies
 
-## Expanding the ESLint configuration
+```bash
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+npm i 
 
-- Configure the top-level `parserOptions` property like this:
+or
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+npm install
+
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Then create .env file as for the .env.example is showing
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```bash
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+VITE_APP_KEYCLOAK_URL=keycloak-url
+VITE_APP_KEYCLOAK_CLIENT_ID=your-client
+VITE_APP_KEYCLOAK_REALM=your-realm
+
 ```
+
+## Usage
+
+Make sure to setup the client to accept the http://localhost:5173* or http://localhost* as a redirect url on the keycloak console 
+
+after that you can test and see how to connect with keycloak and what keycloak actions can you initiate from your app
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)

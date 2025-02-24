@@ -2,7 +2,9 @@ import { Box, Button, Stack, Typography } from '@mui/material'
 import './App.css'
 import { useAuth } from './useAuth/useAuth'
 import LaunchIcon from '@mui/icons-material/Launch'
-import ckwLogo from './assets/images/logoCKW.svg'
+
+import logo from './assets/images/logo.png'
+
 function App() {
   const {
     logout,
@@ -20,8 +22,7 @@ function App() {
   return (
     <Stack gap={2} alignItems="start">
       <Box width={100} sx={{ background: '#FFFFFF', borderRadius: 2, alignSelf: 'center' }} p={2}>
-        {' '}
-        <img src={ckwLogo} alt="ckwLogo" />{' '}
+        <img src={logo} alt="logo" width="100px" />{' '}
       </Box>
       <Typography variant="h3">Welcome to: {realm}</Typography>
       <Typography variant="h3">Keycloak client: {clientId}</Typography>
